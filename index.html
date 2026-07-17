@@ -7,20 +7,43 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Montserrat:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* Luxury Romantic Theme Colors */
-            --bg-dark: linear-gradient(135deg, #050003 0%, #1a000c 50%, #0d0006 100%);
-            --bg-card: rgba(25, 10, 18, 0.75);
-            --gold-primary: #dfba6b;
-            --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
-            --text-light: #f5f5f5;
-            --text-muted: #d5b9c9;
-        }
+            :root {
+        --bg-dark: #0a0a0a;
+        --bg-card: rgba(20, 20, 20, 0.85);
+        --gold-primary: #dfba6b;
+        --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
+        --text-light: #f5f5f5;
+        --text-muted: #b5b5b5;
+    } /* <-- Ye bracket lagana zaroori tha */
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-        }
+    /* 1. Smooth Fade-in Animation */
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(30px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .long-message-box, .polaroid {
+        animation: fadeInUp 1s ease forwards;
+    }
+
+    /* 2. Photo par Pyaara sa "Tilt" Effect */
+    .polaroid {
+        transition: transform 0.4s ease, box-shadow 0.4s ease;
+        cursor: pointer;
+    }
+
+    .polaroid:hover {
+        transform: scale(1.05) rotate(-2deg); /* Photo thodi badi aur tilt hogi */
+        box-shadow: 0 15px 30px rgba(255, 215, 0, 0.2); /* Gold glow effect */
+    }
+
+    /* 3. Message box me depth laane ke liye */
+    .long-message-box {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+        background: rgba(20, 20, 20, 0.9);
+    }
+
 
         body {
             background: var(--bg-dark);
