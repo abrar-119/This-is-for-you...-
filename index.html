@@ -13,7 +13,16 @@
         --gold-gradient: linear-gradient(135deg, #bf953f 0%, #fcf6ba 25%, #b38728 50%, #fbf5b7 75%, #aa771c 100%);
         --text-light: #f5f5f5;
         --text-muted: #b5b5b5;
-    }
+        }
+            html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    overflow-x: hidden; /* Ye horizontal scroll bar ko permanently hata dega */
+    scroll-behavior: smooth; /* Ye scroll ko premium/smooth feel dega */
+    -webkit-overflow-scrolling: touch; /* Mobile pe smooth scroll ke liye */
+            }
+            
 
     @keyframes fadeInUp {
         from { opacity: 0; transform: translateY(30px); }
