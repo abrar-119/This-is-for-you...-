@@ -492,10 +492,6 @@
         const audioToggle = document.getElementById('audioToggle');
 
         if(boxBtn) {
-            boxBtn.addEventListener('click', () => {
-                // 🎵 Play Music & Show Toggle Button
-                bgMusic.play().catch(e => console.log("Autoplay handled", e));
-                audioToggle.style.display = 'flex';
 
                 // 🌌 Start Floating Hearts Background
                 createBackgroundHearts();
@@ -525,21 +521,6 @@
                     surpriseContent.style.display = 'block';
                     document.body.style.overflowY = 'auto'; // Enable scrolling
                 }, 400);
-            });
-        }
-
-        // 🔊 Sound Control Button
-        if(audioToggle) {
-            audioToggle.addEventListener('click', () => {
-                if (bgMusic.paused) {
-                    bgMusic.play();
-                    audioToggle.innerHTML = '🔊';
-                    audioToggle.style.background = 'rgba(223, 186, 107, 0.2)';
-                } else {
-                    bgMusic.pause();
-                    audioToggle.innerHTML = '🔇';
-                    audioToggle.style.background = 'rgba(255, 0, 0, 0.1)';
-                }
             });
         }
     </script>
