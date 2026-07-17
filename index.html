@@ -171,18 +171,42 @@
             border-radius: 8px;
         }
 
-        /* Ye ribbon ke upar ek chhota knot/bow add karega */
-.ribbon-bow {
+        .ribbon-bow {
     position: absolute;
-    top: -25px; /* Box ke thoda upar */
+    top: -32px; /* Lid ke thoda upar */
     left: 50%;
     transform: translateX(-50%);
-    width: 40px;
-    height: 20px;
-    background: #dfba6b; /* Gold color */
-    border-radius: 5px;
-    z-index: 3; /* Lid ke upar dikhne ke liye */
+    width: 60px;
+    height: 35px;
+    z-index: 5;
 }
+
+/* Ribbon ki do wings (dono taraf ke loops) */
+.ribbon-bow::before, .ribbon-bow::after {
+    content: "";
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    background: var(--gold-primary);
+    border-radius: 50% 50% 50% 50%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
+.ribbon-bow::before { left: 0; }
+.ribbon-bow::after { right: 0; }
+
+/* Beech ka center knot */
+.ribbon-bow::after {
+    content: "";
+    width: 15px;
+    height: 15px;
+    background: #fff; /* Beech ka chhota white knot */
+    border-radius: 50%;
+    top: 10px;
+    left: 23px;
+    z-index: 6;
+}
+        
         
         .ribbon-v, .ribbon-h { position: absolute; background: var(--gold-gradient); }
         .ribbon-v { left: 50%; top: 0; width: 24px; height: 100%; transform: translateX(-50%); }
