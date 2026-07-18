@@ -37,6 +37,9 @@
     .polaroid {
         transition: transform 0.4s ease, box-shadow 0.4s ease;
         cursor: pointer;
+        /* ... baki sab waisa hi ... */
+    will-change: transform, filter; 
+    transition: all 0.7s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
     }
 
     .polaroid:hover {
@@ -467,21 +470,29 @@
     </div>
 
  <script>
-    // 1. Scroll-triggered Parallax Zoom Effect (New)
+    // 1. Scroll-triggered Parallax Zoom (Enhanced for Up & Down)
     window.addEventListener('load', () => {
-        const observerOptions = { threshold: 0.5 };
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -10% 0px', // Dono directions ke liye sensitive
+            threshold: 0.1
+        };
+
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const polaroid = entry.target;
                 if (entry.isIntersecting) {
-                    document.querySelectorAll('.polaroid').forEach(p => p.classList.remove('active'));
+                    // Active karo
+                    document.querySelectorAll('.polaroid').forEach(p => p.classList.remove('active', 'inactive'));
                     polaroid.classList.add('active');
                 } else {
+                    // Inactive karo
                     polaroid.classList.remove('active');
                     polaroid.classList.add('inactive');
                 }
             });
         }, observerOptions);
+
         document.querySelectorAll('.polaroid').forEach(p => observer.observe(p));
     });
 
@@ -518,13 +529,9 @@
 
     // 4. Gift Box Click Logic
     const boxBtn = document.getElementById('giftBoxBtn');
-    const boxSection = document.getElementById('boxSection');
-    const surpriseContent = document.getElementById('surpriseContent');
-    const bgMusic = document.getElementById('bgMusic');
-
     if(boxBtn) {
         boxBtn.addEventListener('click', () => {
-            if(bgMusic) bgMusic.play().catch(e => console.log("Autoplay handled", e));
+            document.getElementById('bgMusic')?.play().catch(e => console.log(e));
             createBackgroundHearts();
             for (let i = 0; i < 75; i++) {
                 const confetti = document.createElement('div');
@@ -542,13 +549,14 @@
             }
             boxBtn.style.transform = 'scale(0.85)';
             setTimeout(() => {
-                if(boxSection) boxSection.style.display = 'none';
-                if(surpriseContent) surpriseContent.style.display = 'block';
+                document.getElementById('boxSection').style.display = 'none';
+                document.getElementById('surpriseContent').style.display = 'block';
                 document.body.style.overflowY = 'auto';
             }, 400);
         });
     }
  </script>
+    
     
 </body>
 </html>
