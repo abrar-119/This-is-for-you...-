@@ -449,6 +449,28 @@
     </div>
 
     <script>
+        const observerOptions = {
+        threshold: 0.6
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            const polaroid = entry.target;
+            if (entry.isIntersecting) {
+                // Purani active classes hatao
+                document.querySelectorAll('.polaroid').forEach(p => p.classList.remove('active', 'inactive'));
+                // Nayi active class add karo
+                polaroid.classList.add('active');
+            } else {
+                polaroid.classList.remove('active');
+                polaroid.classList.add('inactive');
+            }
+        });
+    }, observerOptions);
+
+    // Ye line aapke sabhi polaroid boxes ko track karegi
+    document.querySelectorAll('.polaroid').forEach(p => observer.observe(p));
+        
         const hideLoader = () => {
             const loader = document.getElementById('preloader');
             const content = document.getElementById('mainContent');
