@@ -463,6 +463,59 @@ transform:scale(1.4);
             0% { transform: translate(-50%, -50%) translate(0, 0) rotate(0deg); opacity: 1; }
             100% { transform: translate(-50%, -50%) translate(var(--x), var(--y)) rotate(360deg); opacity: 0; }
         }
+
+        #whatsappBtn{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    width:60px;
+    height:60px;
+    border-radius:50%;
+    background:#25D366;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    box-shadow:0 10px 30px rgba(37,211,102,.45);
+    z-index:9999;
+
+    opacity:0;
+    visibility:hidden;
+    transform:translateY(30px) scale(.8);
+
+    transition:all .6s cubic-bezier(.22,.61,.36,1);
+}
+
+#whatsappBtn.show{
+    opacity:1;
+    visibility:visible;
+    transform:translateY(0) scale(1);
+}
+
+#whatsappBtn img{
+    width:34px;
+    height:34px;
+}
+
+#whatsappBtn:hover{
+    transform:scale(1.12);
+    box-shadow:0 15px 40px rgba(37,211,102,.65);
+}
+@keyframes whatsappPulse{
+    0%{
+        box-shadow:0 0 0 0 rgba(37,211,102,.6);
+    }
+    70%{
+        box-shadow:0 0 0 18px rgba(37,211,102,0);
+    }
+    100%{
+        box-shadow:0 0 0 0 rgba(37,211,102,0);
+    }
+}
+
+#whatsappBtn.show{
+    animation:whatsappPulse 2s infinite;
+}
+
     </style>
 </head>
 <body>
@@ -528,6 +581,7 @@ transform:scale(1.4);
         </div>
     </div>
 
+    
     <script>
     // Premium Scroll Animation
 
@@ -603,6 +657,7 @@ window.addEventListener("resize", updatePolaroids);
     const boxSection = document.getElementById('boxSection');
     const surpriseContent = document.getElementById('surpriseContent');
     const bgMusic = document.getElementById('bgMusic');
+    const whatsappBtn = document.getElementById("whatsappBtn");
     const openSound = document.getElementById('openSound');
 
     if(boxBtn) {
@@ -669,6 +724,7 @@ setTimeout(() => {
 
     boxSection.style.display = "none";
     surpriseContent.style.display = "block";
+    setTimeout(() => {whatsappBtn.classList.add("show");}, 800);
     surpriseContent.style.opacity = "0";
     surpriseContent.style.transform = "translateY(40px)";
     surpriseContent.style.transition =
@@ -689,6 +745,14 @@ setTimeout(() => {
 } // if(boxBtn) close
     
 </script>
+
+    <a href="https://wa.me/919328178254?text=Thank%20you%20for%20the%20beautiful%20surprise%20❤️"
+   id="whatsappBtn"
+   target="_blank">
+
+    <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg">
+
+    </a>
     
 </body>
 </html>
