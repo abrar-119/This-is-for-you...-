@@ -219,18 +219,28 @@
         .lid-ribbon-h { top: 50%; left: 0; height: 24px; width: 100%; transform: translateY(-50%); }
 
         .gift-container:hover .gift-lid { transform: translateY(-5px) rotate(-5deg); }
+. instruction-text{
+    color: #ffd700; /* Rich Gold color */
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
+    margin-top: 20px;
+    
+    /* Magical Pulse Animation */
+    animation: pulse 1.5s infinite ease-in-out;
+    cursor: pointer;
+}
 
-        .instruction-text {
-            font-size: 14px;
-            color: #bfa3b3;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-            margin-top: 15px;
-            animation: bounce 2s infinite;
-            font-weight: 600;
-        }
-        @keyframes bounce { 0%, 100%, 20% { transform: translateY(0); } 40% { transform: translateY(-6px); } 60% { transform: translateY(-3px); } }
-
+@keyframes pulse {
+    0% { opacity: 0.7; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.05); }
+    100% { opacity: 0.7; transform: scale(1); }
+}
+        
+        
         #surpriseContent { display: none; }
 
         .birthday-card {
@@ -244,14 +254,26 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            margin-bottom: 15px;
-            background: var(--gold-gradient);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        .h1{
+    font-family: 'Playfair Display', serif; /* Elegant and classic */
+    font-size: 32px; /* Thoda bada aur prominent */
+    font-weight: 800;
+    
+    /* Gold Metallic Gradient */
+    background: linear-gradient(to bottom, #d4af37, #fdfbfb, #d4af37);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Premium Look */
+    text-align: center;
+    margin-bottom: 25px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    
+    /* Soft Glow effect for depth */
+    filter: drop-shadow(0px 2px 2px rgba(0,0,0,0.5));
         }
+        
 
         .short-p { font-size: 15px; line-height: 1.6; color: var(--text-light); }
 
