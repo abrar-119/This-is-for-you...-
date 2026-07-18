@@ -259,24 +259,17 @@
             animation: fadeInUp 0.8s ease forwards;
         }
 
-        .h1{
-             font-family: 'Playfair Display', serif;
-    font-size: 26px;
-    font-weight: 800;
-    text-align: center;
-    margin-bottom: 25px;
-    white-space: nowrap; /* Ye guarantee karega ki ek hi line mein rahe */
-    text-transform: capitalize;
-
-    /* Vibrant Gold Gradient */
+        h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 28px;
+    margin-bottom: 15px;
+    
+    /* Naya Vibrant Gold Gradient */
     background: linear-gradient(to right, #FFD700, #FFFACD, #FF8C00);
     -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent; /* Text ko transparent banate hain taaki gradient dikhe */
-    
-    /* Premium Look */
-    filter: drop-shadow(0px 2px 4px rgba(0,0,0,0.6));
-        }
+    -webkit-text-fill-color: transparent;
+}
+
         
 
         .short-p { font-size: 15px; line-height: 1.6; color: var(--text-light); }
