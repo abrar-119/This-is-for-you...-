@@ -468,6 +468,7 @@ transform:scale(1.4);
 <body>
 
     <audio id="bgMusic" loop src="music.mp3"></audio>
+    <audio id="openSound" src="open.mp3" preload="auto"></audio>
 
     <div id="heartBgContainer"></div>
 
@@ -602,10 +603,14 @@ window.addEventListener("resize", updatePolaroids);
     const boxSection = document.getElementById('boxSection');
     const surpriseContent = document.getElementById('surpriseContent');
     const bgMusic = document.getElementById('bgMusic');
+    const openSound = document.getElementById('openSound');
 
     if(boxBtn) {
         boxBtn.addEventListener('click', () => {
             if(bgMusic) bgMusic.play().catch(e => console.log("Autoplay handled", e));
+            if(openSound) openSound.play().catch(()=>{});
+            if(navigator.vibrate)  {navigator.vibrate(80);}
+            
             createBackgroundHearts();
             const flash=document.createElement("div");
 
