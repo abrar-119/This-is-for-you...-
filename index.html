@@ -336,6 +336,7 @@
     flex-direction: column;
     align-items: center;
     overflow-x: hidden; /* Ye side-to-side scrolling hatayega */
+            
 }
 
 .polaroid {
@@ -485,21 +486,24 @@
     <script>
     // 1. Scroll-triggered Parallax Zoom (Enhanced for Up & Down)
     window.addEventListener('load', () => {
+        // Threshold ko ek array bana diya taaki har level par check ho
         const observerOptions = {
             root: null,
-            rootMargin: '-10% 0px -10% 0px', // Dono directions ke liye sensitive
-            threshold: 0.1
+            rootMargin: '-20% 0px -20% 0px', 
+            threshold: [0, 0.25, 0.5, 0.75, 1] 
         };
 
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 const polaroid = entry.target;
-                if (entry.isIntersecting) {
-                    // Active karo
+                
+                // Agar photo screen mein enter kar rahi hai
+                if (entry.intersectionRatio > 0.2) {
                     document.querySelectorAll('.polaroid').forEach(p => p.classList.remove('active', 'inactive'));
                     polaroid.classList.add('active');
-                } else {
-                    // Inactive karo
+                } 
+                // Agar photo screen se bahar ja rahi hai
+                else {
                     polaroid.classList.remove('active');
                     polaroid.classList.add('inactive');
                 }
@@ -508,7 +512,6 @@
 
         document.querySelectorAll('.polaroid').forEach(p => observer.observe(p));
     });
-
     // 2. Preloader Logic
     const hideLoader = () => {
         const loader = document.getElementById('preloader');
