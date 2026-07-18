@@ -315,15 +315,17 @@
         .polaroid-gallery { width: 100%; padding-bottom: 40px; }
 
         .polaroid {
-            background: #ffffff;
-            padding: 12px 12px 26px 12px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.7);
-            margin: 35px auto;
-            width: 92%;
-            max-width: 300px;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            animation: fadeInUp 1.2s ease forwards;
+    background: #ffffff;
+    padding: 12px 12px 26px 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.7);
+    margin: 35px auto;
+    width: 85%;
+    max-width: 300px;
+    box-sizing: border-box; /* Ye line zaroori hai */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    animation: fadeInUp 1.2s ease forwards;
         }
+        
 
         .polaroid:nth-child(1) { transform: rotate(-3deg); }
         .polaroid:nth-child(2) { transform: rotate(3deg); }
@@ -340,6 +342,8 @@
             height: auto;
             object-fit: contain;
             border: 1px solid #e0e0e0;
+                     max-width: 100%;
+    height: auto;
                 }
         
         .polaroid-caption {
