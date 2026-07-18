@@ -484,23 +484,43 @@
     </div>
 
     <script>
-    // 1. Scroll-triggered Parallax Zoom Effect
-    window.addEventListener('load', () => {
-        const observerOptions = { threshold: 0.5 };
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                const polaroid = entry.target;
-                if (entry.isIntersecting) {
-                    document.querySelectorAll('.polaroid').forEach(p => p.classList.remove('active'));
-                    polaroid.classList.add('active');
-                } else {
-                    polaroid.classList.remove('active');
-                    polaroid.classList.add('inactive');
-                }
-            });
-        }, observerOptions);
-        document.querySelectorAll('.polaroid').forEach(p => observer.observe(p));
+    // Premium Scroll Animation
+
+function updatePolaroids() {
+
+    const cards = document.querySelectorAll(".polaroid");
+
+    const screenCenter = window.innerHeight / 2;
+
+    cards.forEach(card => {
+
+        const rect = card.getBoundingClientRect();
+
+        const cardCenter = rect.top + rect.height / 2;
+
+        const distance = Math.abs(screenCenter - cardCenter);
+
+        if (distance < 170) {
+
+            card.classList.add("active");
+            card.classList.remove("inactive");
+
+        } else {
+
+            card.classList.remove("active");
+            card.classList.add("inactive");
+
+        }
+
     });
+
+}
+
+window.addEventListener("scroll", updatePolaroids);
+
+window.addEventListener("load", updatePolaroids);
+
+window.addEventListener("resize", updatePolaroids);
 
     // 2. Preloader Logic
     const hideLoader = () => {
