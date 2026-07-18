@@ -498,7 +498,7 @@ transform:scale(1.4);
 
         <div id="surpriseContent">
             <div class="birthday-card">
-                <h1 id="birthdayTitle"></h1>
+                <h1>Happy Birthday My Love!</h1>
                 <p class="short-p">May your day be filled with luxury, love, and unending smiles. You deserve the absolute best today and always.</p>
             </div>
 
@@ -532,8 +532,35 @@ transform:scale(1.4);
 </div>
 
     <script>
-    // Premium Scroll Animation
 
+        // Birthday Title Word Animation
+
+const titleText = "Happy Birthday My Love! ❤️";
+const title = document.getElementById("birthdayTitle");
+
+let index = 0;
+
+function typeBirthday(){
+
+    if(index < titleText.length){
+
+        title.innerHTML += titleText.charAt(index);
+
+        index++;
+
+        setTimeout(typeBirthday,120);
+
+    }
+
+}
+
+window.addEventListener("load",()=>{
+
+    setTimeout(typeBirthday,1000);
+
+});
+        
+    // Premium Scroll Animation
 function updatePolaroids() {
 
     const cards = document.querySelectorAll(".polaroid");
@@ -606,19 +633,6 @@ window.addEventListener("resize", updatePolaroids);
     const boxSection = document.getElementById('boxSection');
     const surpriseContent = document.getElementById('surpriseContent');
     const bgMusic = document.getElementById('bgMusic');
-    const birthdayTitle = document.getElementById("birthdayTitle");
-      function typeBirthdayTitle(){
-    const text = "Happy Birthday My Love! ❤️";
-    let i = 0;
-    function type(){
-          if(i < text.length){
-              birthdayTitle.innerHTML += text.charAt(i);
-              i++;
-          setTimeout(type,120);
-        }
-    }
-    type();
-}
     const openSound = document.getElementById('openSound');
 
     if(boxBtn) {
@@ -685,9 +699,6 @@ setTimeout(() => {
 
     boxSection.style.display = "none";
     surpriseContent.style.display = "block";
-    setTimeout(()=>{
-        typeBirthdayTitle();
-                   },700);
     surpriseContent.style.opacity = "0";
     surpriseContent.style.transform = "translateY(40px)";
     surpriseContent.style.transition ="opacity 1s ease, transform 1s ease";
