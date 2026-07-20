@@ -594,24 +594,26 @@ function updatePolaroids() {
         const cardCenter = rect.top + rect.height / 2;
         const distance = Math.abs(screenCenter - cardCenter);
         const progress = Math.max(0, 1 - distance / 280);
-        
+
         if (progress > 0.80) {
 
-    if (!card.classList.contains("active")) {
-        card.classList.add("active");
-        card.classList.remove("inactive");
-    }
+            if (!card.classList.contains("active")) {
+                card.classList.add("active");
+                card.classList.remove("inactive");
+            }
 
-} else {
+        } else {
 
-    if (!card.classList.contains("inactive")) {
-        card.classList.remove("active");
-        card.classList.add("inactive");
-      }
+            if (!card.classList.contains("inactive")) {
+                card.classList.remove("active");
+                card.classList.add("inactive");
+            }
 
-    }
-}
+        }
+
     });
+
+}
     
 let scrollTick = false;
 
