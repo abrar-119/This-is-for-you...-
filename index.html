@@ -356,22 +356,23 @@
 .polaroid:nth-child(3) { transform: rotate(-1.5deg); } */
 
 /* Scroll effect classes */
-.polaroid.active {
-    transform:scale(1.08) rotate(0deg) translateY(-15px) !important;
-    opacity:1;
-z-index: 20;
+.polaroid.active{
 
-filter: brightness(1.08);
+opacity:1;
+transform:translate3d(0,-8px,0) scale(1.02);
+filter:brightness(1);
+box-shadow:0 24px 55px rgba(223,186,107,.30);
+z-index:20;
 
-box-shadow:
-0 35px 80px rgba(223,186,107,.45);
-    overflow:hidden;
 }
 
-.polaroid.inactive {
-    transform:scale(.94) translateY(20px);
-    opacity:.45;
-    filter:brightness(.7) blur(.5px);
+.polaroid.inactive{
+
+opacity:.55;
+transform:translate3d(0,10px,0) scale(.97);
+filter:brightness(.82) blur(.5px);
+z-index:1;
+
 }
 
 .polaroid.active img{
@@ -582,33 +583,33 @@ window.addEventListener("load",()=>{
 function updatePolaroids() {
 
     const cards = document.querySelectorAll(".polaroid");
-
     const screenCenter = window.innerHeight / 2;
 
     cards.forEach(card => {
 
         const rect = card.getBoundingClientRect();
-
         const cardCenter = rect.top + rect.height / 2;
-
         const distance = Math.abs(screenCenter - cardCenter);
 
-        if (distance < 170) {
+        if (distance < 220) {
 
-            card.classList.add("active");
-            card.classList.remove("inactive");
+            if (!card.classList.contains("active")) {
+                card.classList.add("active");
+                card.classList.remove("inactive");
+            }
 
         } else {
 
-            card.classList.remove("active");
-            card.classList.add("inactive");
+            if (!card.classList.contains("inactive")) {
+                card.classList.remove("active");
+                card.classList.add("inactive");
+            }
 
         }
 
     });
 
 }
-
 let scrollTick = false;
 
 window.addEventListener("scroll",()=>{
