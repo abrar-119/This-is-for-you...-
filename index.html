@@ -360,22 +360,19 @@ transform-style: preserve-3d;
 
 /* Scroll effect classes */
 .polaroid.active{
-
-opacity:1;
-transform:translate3d(0,-6px,0) scale(1.015);
-filter:brightness(1);
-box-shadow:0 24px 55px rgba(223,186,107,.30);
-z-index:20;
-
+    opacity:1;
+    transform:translate3d(0,-6px,0) scale(1.018);
+    filter:brightness(1.03);
+    box-shadow:0 28px 60px rgba(223,186,107,.35);
+    z-index:20;
 }
 
 .polaroid.inactive{
-
-opacity:.55;
-transform:translate3d(0,8px,0) scale(.985);
-filter:brightness(.82) blur(.5px);
-z-index:1;
-
+    opacity:.42;
+    transform:translate3d(0,10px,0) scale(.98);
+    filter:brightness(.72) blur(1.2px);
+    box-shadow:0 10px 22px rgba(0,0,0,.45);
+    z-index:1;
 }
 
 .polaroid.active img{
@@ -596,10 +593,10 @@ function updatePolaroids() {
         const distance = Math.abs(screenCenter - cardCenter);
 
         // Responsive trigger
-        const trigger = window.innerHeight * 0.95;
+        const trigger = window.innerHeight * 0.75;
         const progress = Math.max(0, 1 - distance / trigger);
 
-        if (progress > 0.55) {
+        if (progress > 0.65) {
             card.classList.add("active");
             card.classList.remove("inactive");
         } else {
